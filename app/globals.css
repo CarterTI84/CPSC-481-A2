@@ -1,0 +1,11 @@
+
+:root {
+	--primary-color: rgb(205, 56, 66);
+	--secondary-color: rgb(255,255,255);
+}
+
+.container {
+	height: 100vh;
+	margin: 0;
+	background-color: var(--primary-color);
+}
