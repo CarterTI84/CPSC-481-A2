@@ -1,12 +1,12 @@
-export default function Browse() {
+export default function search() {
     return ( 
-    <main className = "browse">
+    <main className = "search">
         <style>{`
         #bg {
             margin: 0 auto;
             background: rgb(205, 56, 66);
             width: 600px;
-            height: 100%;
+            height: 1400 px;
         }
 
         body {
@@ -201,7 +201,7 @@ export default function Browse() {
         </head>
         <body>
             <div id="bg">
-                <div id="searchWrap"><input id="searchBar" type="text" placeholder="Search keyword..."></input></div>
+                <div id="searchWrap"><h1>Search Results: Outdoors</h1></div>
                 <div id="buttonWrap1">
                     <a id="button1">
                         <img id="img1" src="https://travel.destinationcanada.com/_next/image?url=https%3A%2F%2Fadmin.destinationcanada.com%2Fsites%2Fdefault%2Ffiles%2Fimages%2Farticle%2Fheader_food_alberta_credit_banff_lake_louise_tourism_paul_zizkaa.jpg&w=1920&q=75">
