@@ -41,6 +41,12 @@
 	padding-top: 30px;
 }
 
+.buttons {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
 .box {
 	display: flex;
 	flex-direction: column;

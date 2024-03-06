@@ -29,8 +29,9 @@ export default async function ActivityPage({ params }: Props) {
 					<Typography component="legend">Activity Rating</Typography>
 					<Rating name="read-only" value={4.5} precision={0.5} readOnly />
 				</div>
-				<div>
+				<div className={styles.buttons}>
 					<button>Book</button>
+					<button>Save</button>
 				</div>
 			</div>
 			<div className={styles.third}>
