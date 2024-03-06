@@ -1,7 +1,7 @@
 
 import styles from '@/app/styles/Activity.module.css'
 import Banff from '@/assets/banff.jpg'
-import Banff2 from '@/assets/banff2.jpg'
+import Banff2 from '@/assets/banff2.jpeg'
 import Banff3 from '@/assets/banff3.jpg'
 
 import Box from '@mui/material/Box';
