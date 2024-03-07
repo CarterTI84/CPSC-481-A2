@@ -1,0 +1,21 @@
+.container {
+    padding: 20px 20px 0 20px;
+}
+
+.innerContainer {
+    padding: 0 20px;
+}
+
+.topSection {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardContainer {
+    margin-top: 60px;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+}
