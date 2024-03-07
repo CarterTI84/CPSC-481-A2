@@ -36,3 +36,26 @@ export const activities = [
         picture: '/assets/banff.jpg'
     },
 ]
+
+export const activityCategories = [
+    {
+        id: "1",
+        name: 'Food',
+        picture: '/assets/food_category.webp'
+    },
+    {
+        id: "2",
+        name: 'Outdoors',
+        picture: '/assets/banff.jpg'
+    },
+    {
+        id: "3",
+        name: 'Sight Seeing',
+        picture: '/assets/sight_seeing.jpg'
+    },
+    {
+        id: "4",
+        name: 'Shopping',
+        picture: '/assets/westedmall.jpg'
+    },
+]

@@ -1,8 +1,5 @@
 
 import styles from './page.module.css'
-import Banff from '~/assets/banff.jpg'
-import Banff2 from '~/assets/banff2.jpeg'
-import Banff3 from '~/assets/banff3.jpg'
 
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
@@ -22,7 +19,7 @@ export default async function ActivityPage({ params }: Props) {
 		<div className={styles.container}>
 			<h1 className={styles.title}>Activity {params.id}</h1>
 			<div className={styles.imageContainer}>
-				<Image src={Banff} alt="Banff" width={250} />
+				<Image src='/assets/banff.jpg' alt="Banff" width={250} />
 			</div>
 			<div className={styles.secondContainer}>
 				<div>

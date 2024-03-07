@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-color: white;
+}
+
+.imageSection {
+    height: 100%;
+}
+
+.descriptionSection {
+    padding: 0 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.descriptionSection h2 {
+    color: white;
+}
