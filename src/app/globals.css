@@ -1,0 +1,24 @@
+
+:root {
+	--bounds-color: #f0f4f9;
+	--primary-color: rgb(205, 56, 66);
+	--secondary-color: rgb(255,255,255);
+}
+
+body {
+	height: 100vh;
+	margin: 0;
+	background-color: var(--bounds-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	background-color: var(--primary-color);
+	height: 100%;
+	max-width: 430px;
+	width: 100%;
+	min-width: 375px;
+	overflow-y: auto;
+}
