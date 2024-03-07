@@ -3,7 +3,6 @@ import styles from './page.module.css';
 import Category from '@/components/Category';
 import { CategoryType } from '@/types/Category';
 import TopNavbar from '@/components/TopNavbar';
-import BottomNavbar from '@/components/BottomNavbar';
 
 type CategoryCardProps = {
     category: CategoryType
