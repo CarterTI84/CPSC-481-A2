@@ -5,10 +5,11 @@ import Rating from '@mui/material/Rating';
 import Heart from '@/components/Heart'
 
 type Props = {
-    activity: ActivityType
+    activity: ActivityType,
+    showHeart?: boolean
 }
 
-export default function Activity({ activity }: Props) {
+export default function Activity({ activity, showHeart }: Props) {
     const { name, rating, picture } = activity
     return (
         <div className={styles.container}>
@@ -22,7 +23,7 @@ export default function Activity({ activity }: Props) {
                     <span>{rating}</span>
                 </div>
                 <div className={styles.rightDescriptionSection}>
-                    <Heart />
+                    {showHeart && <Heart />}
                 </div>
             </div>
         </div>
