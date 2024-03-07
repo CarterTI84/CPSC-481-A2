@@ -19,7 +19,7 @@ export default async function ActivityPage({ params }: Props) {
 		<div className={styles.container}>
 			<h1 className={styles.title}>Activity {params.id}</h1>
 			<div className={styles.imageContainer}>
-				<Image src='/assets/banff.jpg' alt="Banff" width={250} />
+				<Image src='/assets/banff.jpg' alt="Banff" width={250} height={200} />
 			</div>
 			<div className={styles.secondContainer}>
 				<div>
@@ -28,7 +28,6 @@ export default async function ActivityPage({ params }: Props) {
 				</div>
 				<div className={styles.buttons}>
 					<button>Book</button>
-					<button>Save</button>
 				</div>
 			</div>
 			<div className={styles.third}>
