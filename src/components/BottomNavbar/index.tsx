@@ -1,5 +1,17 @@
+import RouteItem from './RouteItem'
+import styles from './index.module.css'
+
+type RouteType = 'browse' | 'schedule' | 'saved'
+const routes: RouteType[] = ['browse', 'schedule', 'saved']
+
 export default function BottomNavbar() {
     return (
-        <div>index</div>
+        <center className={styles.navbarContainer}>
+            <nav className={styles.navbar}>
+                <div className={styles.routesContainer}>
+                    {routes.map(route => <RouteItem route={route} />)}
+                </div>
+            </nav>
+        </center>
     )
 }

@@ -1,0 +1,41 @@
+.navbarContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+	width: 100%;
+    height: 70px;
+    z-index: 10;
+}
+
+.navbar {
+    background-color: var(--maroon);
+    max-width: 430px;
+	width: 100%;
+	min-width: 375px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.routesContainer {
+    width: calc(100% - 40px);
+    height: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.routeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    height: 100%;
+}
+
+.routeContainer span {
+    font-size: large;
+    text-transform: capitalize;
+}
