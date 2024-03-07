@@ -37,11 +37,11 @@ export const activities = [
     },
 ]
 
-export const searchCategories = [
+export const activityCategories = [
     {
         id: "1",
         name: 'Food',
-        picture: 'https://travel.destinationcanada.com/_next/image?url=https%3A%2F%2Fadmin.destinationcanada.com%2Fsites%2Fdefault%2Ffiles%2Fimages%2Farticle%2Fheader_food_alberta_credit_banff_lake_louise_tourism_paul_zizkaa.jpg&w=1920&q=75'
+        picture: '/assets/food_category.webp'
     },
     {
         id: "2",
@@ -56,6 +56,6 @@ export const searchCategories = [
     {
         id: "4",
         name: 'Shopping',
-        picture: 'https://media-cdn.tripadvisor.com/media/photo-s/10/26/a3/f7/photo9jpg.jpg'
+        picture: '/assets/westedmall.jpg'
     },
 ]
