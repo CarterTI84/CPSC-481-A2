@@ -9,7 +9,7 @@ export default function BottomNavbar() {
         <center className={styles.navbarContainer}>
             <nav className={styles.navbar}>
                 <div className={styles.routesContainer}>
-                    {routes.map(route => <RouteItem route={route} />)}
+                    {routes.map((route, index) => <RouteItem key={index} route={route} />)}
                 </div>
             </nav>
         </center>
