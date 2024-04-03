@@ -4,6 +4,7 @@
 }
 
 .categoriesContainer {
+    padding-bottom: 70px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -11,8 +12,14 @@
 }
 
 .categoryCard {
+    cursor: pointer;
     width: 100%;
     border-radius: 6px;
     margin-bottom: 20px;
     overflow: hidden;
+    transition: transform .3s ease-in-out;
+}
+
+.categoryCard:hover {
+    transform: scale(1.04);
 }
