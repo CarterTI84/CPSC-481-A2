@@ -4,7 +4,7 @@ import { Favorite } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import { useState } from 'react';
 
-export default function index() {
+export default function Heart() {
     const [clicked, setClicked] = useState(false);
     const toggleState = () => {
         setClicked(clicked => !clicked)
