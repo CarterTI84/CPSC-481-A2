@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+}
+
+.description {
+    font-size: larger;
+    margin: 20px 0;
+    text-align: left;
+    color: #e8e8e8;
+}

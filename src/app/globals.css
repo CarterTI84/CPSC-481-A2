@@ -27,6 +27,7 @@ body {
 	width: 100%;
 	min-width: 375px;
 	overflow-y: auto;
+	scroll-behavior: smooth;
 }
 
 .container::-webkit-scrollbar {
