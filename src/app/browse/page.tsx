@@ -3,6 +3,7 @@ import styles from './page.module.css';
 import Category from '@/components/Category';
 import { CategoryType } from '@/types/Category';
 import TopNavbar from '@/components/TopNavbar';
+import PaddedContainer from '@/components/PaddedContainer';
 
 type CategoryCardProps = {
     category: CategoryType
@@ -17,12 +18,14 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
 
 export default function page() {
     return (
-        <div className={styles.container}>
-            <TopNavbar />
-            <div className={styles.categoriesContainer}>
-                <div style={{ width: "100%", height: "90px" }}></div>
-                {activityCategories.map(category => <CategoryCard key={category.id} category={category} />)}
+        <PaddedContainer>
+            <div className={styles.container}>
+                <TopNavbar />
+                <div className={styles.categoriesContainer}>
+                    <div style={{ width: "100%", height: "90px" }}></div>
+                    {activityCategories.map(category => <CategoryCard key={category.id} category={category} />)}
+                </div>
             </div>
-        </div>
+        </PaddedContainer>
     )
 }

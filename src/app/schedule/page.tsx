@@ -1,5 +1,15 @@
+'use client'
+
+import { useState } from 'react'
 import Activity from '@/components/Activity'
 import styles from './page.module.css'
+import PaddedContainer from '@/components/PaddedContainer'
+import dayjs, { Dayjs } from 'dayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { IconButton } from '@mui/material'
+import { FastRewind, FastForward } from '@mui/icons-material';
 
 const CardContainer = () => {
     return (
@@ -18,17 +28,51 @@ const CardContainer = () => {
 }
 
 export default function page() {
+    const [value, setValue] = useState<Dayjs>(dayjs(new Date()));
+
+    const goToNextDay = () => {
+        setValue(date => {
+            const givenDate = date.toDate();
+            const nextDay = new Date(givenDate);
+            nextDay.setDate(nextDay.getDate() + 1)
+            return dayjs(nextDay)
+        })
+    }
+
+    const goToPreviousDay = () => {
+        setValue(date => {
+            const givenDate = date.toDate();
+            const previousDay = new Date(givenDate);
+            previousDay.setDate(previousDay.getDate() - 1)
+            return dayjs(previousDay)
+        })
+    }
+
+    const handleDateChange = (newDate: dayjs.Dayjs | null) => {
+        if(!!newDate)
+            setValue(newDate)
+    }
+
     return (
-        <div className={styles.container}>
-            <div className={styles.innerContainer}>
+        <PaddedContainer>
+            <center className={styles.container}>
+                <h1>Your Schedule</h1>
                 <div className={styles.topSection}>
-                    <button>Previous</button>
-                    <h1 style={{ color: 'white' }}>Today</h1>
-                    <button>Next</button>
+                    <IconButton onClick={goToPreviousDay}>
+                        <FastRewind />
+                    </IconButton>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker
+                            label="Date"
+                            value={value}
+                            onChange={handleDateChange}
+                        />
+                    </LocalizationProvider>
+                    <IconButton onClick={goToNextDay}>
+                        <FastForward />
+                    </IconButton>
                 </div>
-                <h2 style={{ color: 'white' }}>Time: 14:20pm</h2>
-                <CardContainer />
-            </div>
-        </div>
+            </center>    
+        </PaddedContainer>
     )
 }

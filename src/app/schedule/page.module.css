@@ -1,16 +1,21 @@
 .container {
-    padding: 20px 20px 0 20px;
+    color: white;
+}
+
+.topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: white;
+    box-shadow: 
+    0px 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-radius: 6px;
 }
 
 .innerContainer {
     padding: 0 20px;
-}
-
-.topSection {
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .cardContainer {
