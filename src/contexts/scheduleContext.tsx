@@ -1,13 +1,12 @@
 'use client'
 
 import { ScheduleItem } from '@/types/Schedule';
-import { PropsWithChildren, createContext, useState } from 'react'
+import { PropsWithChildren, createContext, useEffect, useState } from 'react'
 
 const localStorageKey = "visit-ab-schedule";
 
-const itemsFromLocalStorage = localStorage.getItem(localStorageKey)
-
 const getSchedule = (): ScheduleItem[] => {
+    const itemsFromLocalStorage = localStorage.getItem(localStorageKey)
     if(!!itemsFromLocalStorage)
         return JSON.parse(itemsFromLocalStorage).schedule
     return []
@@ -19,7 +18,11 @@ type contextObject = {
 const ScheduleContext = createContext<contextObject | null>(null)
 
 export function ScheduleContextProvider({ children }: PropsWithChildren) {
-    const [schedule, setSchedule] = useState(getSchedule)
+    const [schedule, setSchedule] = useState<ScheduleItem[]>([])
+
+    useEffect(() => {
+        setSchedule(getSchedule())
+    }, [])
 
     return (
         <ScheduleContext.Provider
