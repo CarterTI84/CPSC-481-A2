@@ -2,5 +2,6 @@ export type ActivityType = {
     id: string,
     name: string,
     rating: number,
-    picture: string
+    pictures: string[],
+    description: string
 }
