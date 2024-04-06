@@ -1,62 +1,66 @@
 .container {
-	height: 100vh;
+	height: calc(100% - 20px);
+	padding-top: 20px;
 	color: white;
 }
 
 .title {
 	font-size: 2rem;
-	font-weight: 700;
-	text-align: center;
 	margin: 0;
-	padding-top: 5px;
 }
 
-.imageContainer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 5px;
+.imagesContainer {
+	width: 100%;
 }
 
-.secondContainer {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	padding-top: 20px;
+.activityImage {
+	margin: 10px 0;
+	width: 330px !important;
+	height: 285px;
+	overflow: hidden;
+	border-radius: 4px;
+	transition: transform .4s ease-in-out;
+	transform: scale(0.9)
 }
 
-.third {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-	padding-top: 20px;
-}
-
-.description {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 30px;
-}
-
-.buttons {
-	display: flex;
-	flex-direction: row;
-	gap: 5px;
+.activityImage.active {
+	transform: scale(1) !important;
 }
 
 .box {
+	margin-top: 50px;
+	width: 80%;
+	height: 200px;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
-	height: 200px;
-	width: 80%;
 	background-color: aliceblue;
 	box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
 	color: black;
+}
+
+.box p {
+	text-align: left;
+	margin: 0;
+	padding: 0;
+}
+
+.ratingContainer, .buttonContainer {
+	width: calc(80% + 40px);
+}
+
+.ratingContainer {
+	width: calc(80% + 40px);
+	margin: 30px 0;
+	display: flex;
+	align-items: center;
+}
+
+.buttonContainer {
+	display: flex;
+	align-items: center;
+	height: 40px;
+	margin-top: 10px;
 }

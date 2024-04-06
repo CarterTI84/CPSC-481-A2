@@ -9,7 +9,8 @@ const CardContainer = () => {
                     id: '1',
                     name: 'Skiing', 
                     rating: 4,
-                    picture: '/assets/banff.jpg',
+                    pictures: ['/assets/banff.jpg'],
+                    description: "Experience the thrill of world-class skiing in Banff, nestled amidst the stunning peaks of the Canadian Rockies. Renowned for its powder-filled slopes and breathtaking scenery, Banff offers an unforgettable winter sports adventure for skiers of all levels. From gentle slopes perfect for beginners to challenging terrain for seasoned experts, there's something for everyone on Banff's slopes. After a day of carving through pristine snow, relax and unwind in cozy mountain lodges or indulge in après-ski activities in the charming town of Banff. Whether you're a seasoned skier or new to the sport, Banff promises an exhilarating and memorable winter getaway."
                 }}
             />
         </div>
