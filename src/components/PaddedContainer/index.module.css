@@ -1,0 +1,10 @@
+.container {
+    height: 100%;
+    overflow-x: hidden;
+    padding: 0 20px;
+}
+
+.innerContainer {
+    width: calc(100vw - 40px);
+    max-width: 390px;
+}

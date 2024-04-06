@@ -2,6 +2,7 @@ import { ActivityType } from '@/types/Activity'
 import styles from './page.module.css'
 import Activity from '@/components/Activity'
 import { activities as results } from '~/mockData/Activities'
+import PaddedContainer from '@/components/PaddedContainer'
 
 type ResultCardProps = {
     result: ActivityType
@@ -28,11 +29,13 @@ const TopBar = () => {
 
 export default function Saved() {
     return (
-        <div className={styles.container}>
-            <TopBar />
-            <div className={styles.activitiesContainer}>
-                {results.map(result => <ResultCard key={result.id} result={result} />)}
+        <PaddedContainer>
+            <div className={styles.container}>
+                <TopBar />
+                <div className={styles.activitiesContainer}>
+                    {results.map(result => <ResultCard key={result.id} result={result} />)}
+                </div>
             </div>
-        </div>
+        </PaddedContainer>
     )
 }

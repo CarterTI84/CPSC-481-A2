@@ -2,6 +2,7 @@ import Activity from '@/components/Activity'
 import styles from './page.module.css'
 import { ActivityType } from '@/types/Activity'
 import { activities } from '~/mockData/Activities'
+import PaddedContainer from '@/components/PaddedContainer'
 
 type ActivityCardProps = {
     activity: ActivityType
@@ -16,11 +17,11 @@ const ActivityCard = ({ activity }: ActivityCardProps) => {
 
 export default function Activities() {
     return (
-        <div className={styles.container}>
+        <PaddedContainer>
             <h1 style={{ color: 'white' }}>Activities</h1>
             <div className={styles.activitiesContainer}>
                 {activities.map(activity => <ActivityCard key={activity.id} activity={activity} />)}
             </div>
-        </div>
+        </PaddedContainer>
     )
 }
