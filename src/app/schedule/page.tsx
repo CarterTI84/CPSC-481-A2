@@ -27,7 +27,7 @@ const CardContainer = () => {
     )
 }
 
-export default function page() {
+export default function Schedule() {
     const [value, setValue] = useState<Dayjs>(dayjs(new Date()));
 
     const goToNextDay = () => {
