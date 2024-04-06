@@ -20,6 +20,7 @@ export default function page() {
         <div className={styles.container}>
             <TopNavbar />
             <div className={styles.categoriesContainer}>
+                <div style={{ width: "100%", height: "90px" }}></div>
                 {activityCategories.map(category => <CategoryCard key={category.id} category={category} />)}
             </div>
         </div>

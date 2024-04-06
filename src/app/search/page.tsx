@@ -14,22 +14,24 @@ const ResultCard = ({ result }: ResultCardProps) => {
     )
 }
 
-const TopBar = () => {
+const TopBar = ({ activityName }: { activityName: string }) => {
     return (
         <center className={styles.navbarContainer}>
             <div className={styles.navbar}>
                 <div className={styles.navbarContent}>
-                    Search results: Outdoors
+                    {`Search results: ${activityName}`}
                 </div>
             </div>
         </center>
     )
 }
 
-export default function Search() {
+
+export default function Search({ searchParams: { activity } }: { searchParams: { activity: string } }) {
+    console.log("given activity", activity)
     return (
         <div className={styles.container}>
-            <TopBar />
+            <TopBar activityName={activity} />
             <div className={styles.activitiesContainer}>
                 {results.map(result => <ResultCard key={result.id} result={result} />)}
             </div>
