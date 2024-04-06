@@ -10,15 +10,16 @@ type RouteType = 'browse' | 'schedule' | 'saved'
 
 type RouteIconProps = {
     route: RouteType,
-    isActive: boolean
+    isActive: boolean,
+    size: number
 }
-const RouteIcon = ({ route, isActive }: RouteIconProps) => {
+const RouteIcon = ({ route, isActive, size }: RouteIconProps) => {
     if(route === 'browse')
         return (
             <>
                 {isActive ? 
-                    <Search htmlColor='#c9a461' />
-                    :<SearchOutlined htmlColor='white' />
+                    <Search htmlColor='#c9a461' sx={{ fontSize: `${size}px` }} />
+                    :<SearchOutlined htmlColor='white' sx={{ fontSize: `${size}px` }} />
                 }
             </>
         )
@@ -26,16 +27,16 @@ const RouteIcon = ({ route, isActive }: RouteIconProps) => {
         return (
             <>
                 {isActive ? 
-                    <CalendarMonth htmlColor='#c9a461' />
-                    :<CalendarMonthOutlined htmlColor='white' />
+                    <CalendarMonth htmlColor='#c9a461' sx={{ fontSize: `${size}px` }} />
+                    :<CalendarMonthOutlined htmlColor='white' sx={{ fontSize: `${size}px` }} />
                 }
             </>
         )
     return (
         <>
             {isActive ? 
-                <ShoppingCart htmlColor='#c9a461' />
-                :<ShoppingCartOutlined htmlColor='white' />
+                <ShoppingCart htmlColor='#c9a461' sx={{ fontSize: `${size}px` }} />
+                :<ShoppingCartOutlined htmlColor='white' sx={{ fontSize: `${size}px` }} />
             }
         </>
     )
@@ -48,7 +49,7 @@ export default function RouteItem({ route }: { route: RouteType }) {
     return (
         <Link href={`/${route}`}>
             <div className={styles.routeContainer}>
-                <RouteIcon isActive={isActive} route={route} />
+                <RouteIcon isActive={isActive} route={route} size={22} />
                 <span style={{ color: `${isActive ? '#c9a461' : 'white'}` }}>{route}</span>
             </div>
         </Link>

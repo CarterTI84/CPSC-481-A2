@@ -3,20 +3,22 @@
 import { IconButton } from '@mui/material';
 import styles from './index.module.css'
 import SearchIcon from '@mui/icons-material/Search';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function SearchBar() {
+    const [userInput, setUserInput] = useState("")
+    
     const router = useRouter();
 
-    const goToSearchPage = useCallback(() => {
-        router.push('/search')
-    }, [])
+    const goToSearchPage = () => {
+        router.push(`/search?activity=${userInput}`)
+    }
 
-    const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         goToSearchPage();
-    }, [])
+    }
 
   return (
     <form className={styles.searchbar} onSubmit={handleSubmit}>
@@ -31,7 +33,7 @@ export default function SearchBar() {
             }} />
         </IconButton>
         <div className={styles.inputContainer}>
-            <input placeholder='Search'/>
+            <input placeholder='Search' value={userInput} onChange={e => setUserInput(e.target.value)}/>
         </div>
     </form>
   )

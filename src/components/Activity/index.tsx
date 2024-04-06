@@ -13,7 +13,7 @@ type Props = {
 export default function Activity({ activity, showHeart }: Props) {
     const { name, rating, picture } = activity
     return (
-        <Link href={`/activities/${activity.id}`}>
+        <Link href={`/activities/${activity.name}`}>
             <div className={styles.container}>
                 <div className={styles.imageSection}>
                     <Image alt={picture} src={picture} width={390} height={200} />

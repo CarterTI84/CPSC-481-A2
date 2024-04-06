@@ -19,7 +19,6 @@ export default function TutorialSlide({ tutorialSlide }: Props) {
         <div className={styles.container}>
             <ResponsiveImage src={image} width={350} height={550} alt={`tutorial-${id}`} />
             <p className={styles.description}>{description}</p>
-
         </div>
     )
 }

@@ -10,14 +10,14 @@ import Image from 'next/image';
 
 interface Props {
     params: {
-        id: string;
+        name: string;
     };
 }
 
-export default async function ActivityPage({ params }: Props) {
+export default async function ActivityPage({ params: { name } }: Props) {
 	return (
 		<div className={styles.container}>
-			<h1 className={styles.title}>Activity {params.id}</h1>
+			<h1 className={styles.title}>{name}</h1>
 			<div className={styles.imageContainer}>
 				<Image src='/assets/banff.jpg' alt="Banff" width={250} height={200} />
 			</div>

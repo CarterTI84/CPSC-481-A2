@@ -17,7 +17,6 @@ body {
 	background-color: var(--bounds-color);
 	display: flex;
 	justify-content: center;
-	align-items: center;
 }
 
 .container {
@@ -26,20 +25,23 @@ body {
 	max-width: 430px;
 	width: 100%;
 	min-width: 375px;
-	overflow-y: auto;
-	scroll-behavior: smooth;
 }
 
-.container::-webkit-scrollbar {
+.beatifulScroll {
+	overflow-y: auto;
+	scroll-behavior: smooth; 
+}
+
+.beatifulScroll::-webkit-scrollbar {
 	width: 10px; /* Adjust scrollbar width */
 	 /* Adjust scrollbar height height: 6px;*/
 }
 
-.container::-webkit-scrollbar-track {
+.beatifulScroll::-webkit-scrollbar-track {
 	background-color: inherit; /* Track color */
   }
 
-.container::-webkit-scrollbar-thumb {
+.beatifulScroll::-webkit-scrollbar-thumb {
 	background-color: #cccccc; /* Thumb color */
 	border-radius: 15px; /* Rounded corners for thumb */
 }
