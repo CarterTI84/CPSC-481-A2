@@ -51,7 +51,7 @@ export default function ActivityImages({ images }: { images: string[] }) {
                     <Image 
                         src={image}
                         alt={`Activity-${image}`}
-                        width={330} height={285} 
+                        width={330} height={250} 
                     />
                 </div>
             )}
