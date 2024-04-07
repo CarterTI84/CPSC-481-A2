@@ -1,12 +1,18 @@
+import { activities } from "~/mockData/Activities";
+import ActivityBooking from "./ActivityBooking";
+
 type Props = {
     searchParams: {
-        activity: string
+        activityId: string
     }
 }
 export default function BookActivity({ searchParams }: Props) {
-    const { activity } = searchParams;
+    const { activityId } = searchParams;
 
-    return (
-        <div>page</div>
-    )
+    const activity = activities.find(activity => activity.id === activityId)
+
+    if(!activity)
+        return <h1>Could not find activity</h1>
+    
+    return <ActivityBooking activity={activity} />
 }

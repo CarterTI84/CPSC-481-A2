@@ -1,0 +1,18 @@
+.container {
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.additionalNotesContainer {
+    width: 80%;
+    margin: 50px 0;
+}
+
+.additionalNotesContainer textarea {
+    width: 100%;
+    height: 200px;
+}
