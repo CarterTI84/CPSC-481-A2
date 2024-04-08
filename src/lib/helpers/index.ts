@@ -1,0 +1,1 @@
+export const getFormattedPrice = (arg: number) => `$${arg.toLocaleString('en-ca')}`
