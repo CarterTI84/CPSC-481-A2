@@ -1,8 +1,10 @@
+'use client'
+
 import { ActivityType } from '@/types/Activity'
 import styles from './page.module.css'
 import Activity from '@/components/Activity'
-import { activities as results } from '~/mockData/Activities'
 import PaddedContainer from '@/components/PaddedContainer'
+import useActivitiesContext from '@/hooks/useActivitiesContext'
 
 type ResultCardProps = {
     result: ActivityType
@@ -29,13 +31,14 @@ const TopBar = ({ activityName }: { activityName: string }) => {
 
 
 export default function Search({ searchParams: { activity } }: { searchParams: { activity: string } }) {
-    console.log("given activity", activity)
+    const { getResults } = useActivitiesContext();
+
     return (
         <PaddedContainer>
             <div className={styles.container}>
                 <TopBar activityName={activity} />
                 <div className={styles.activitiesContainer}>
-                    {results.map(result => <ResultCard key={result.id} result={result} />)}
+                    {getResults(activity ?? "").map(result => <ResultCard key={result.id} result={result} />)}
                 </div>
             </div>
         </PaddedContainer>

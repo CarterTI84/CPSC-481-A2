@@ -2,7 +2,7 @@
 
 import { ActivityType } from "@/types/Activity";
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
-import { activities } from "~/mockData/Activities";
+import { activities, activityCategories } from "~/mockData/Activities";
 
 const localStorageKey = "visit-ab-saved-activities";
 
@@ -22,12 +22,30 @@ type contextObject = {
     savedActivities: ActivityType[],
     addActivityToSaved: (activity: ActivityType) => void
     removeSavedActivity: (activity: string) => void,
-    isSaved: (activity: string) => boolean
+    isSaved: (activity: string) => boolean,
+    getResults: (filterWord: string) => ActivityType[]
 }
 const ActivitiesContext = createContext<contextObject | null>(null)
 
 export function ActivitiesContextProvider({ children }: PropsWithChildren) {
     const allActivities = activities;
+
+    const categoryNames = activityCategories.map(item => item.name);
+
+    const getResults = (filterWord: string) => {
+        let results: ActivityType[] = []
+        let matcher = new RegExp(`.*${filterWord.trim()}.*`, 'i')
+        const categoryName = categoryNames.find(categoryName => matcher.test(categoryName))
+        if(!!categoryName) {
+            let category = activityCategories.find(category => category.name === categoryName)
+            if (category)
+                results = category.activities.map(activityId => activities.find(activity => activity.id === activityId) as ActivityType)
+        }
+        else {
+            results = activities.filter(activity => matcher.test(activity.name)) 
+        }
+        return results
+    }
 
     const [savedActivities, setSavedActivities] = useState<ActivityType[]>([]);
 
@@ -62,7 +80,7 @@ export function ActivitiesContextProvider({ children }: PropsWithChildren) {
             value={{ 
                 allActivities, 
                 savedActivities, 
-                isSaved,
+                isSaved, getResults,
                 addActivityToSaved,
                 removeSavedActivity 
             }}
