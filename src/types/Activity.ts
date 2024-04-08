@@ -4,7 +4,8 @@ export type ActivityType = {
     rating: number,
     price: number,
     difficulty: number,
-    pictures: string[]
+    pictures: string[],
+    address: string,
     description: string
 }
 

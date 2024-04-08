@@ -5,6 +5,7 @@ import ActivityImages from './ActivityImages';
 import { activities } from '~/mockData/Activities';
 import { Button } from '@mui/material';
 import Link from 'next/link';
+import { getFormattedPrice } from '@/lib/helpers';
 
 interface Props {
     params: {
@@ -20,13 +21,16 @@ export default function ActivityPage({ params: { name } }: Props) {
 	if(!activity)
 		return <h1>{`Could not find activity: ${activityName}`}</h1>
 
-	const { id, pictures, description } = activity;
+	const { id, pictures, description, price, address } = activity;
 
 	return (
 		<center className={styles.container}>
 			<h1 className={styles.title}>{activityName}</h1>
 			<div className={styles.imagesContainer}>
 				<ActivityImages images={pictures} />
+			</div>
+			<div className={styles.priceContainer}>
+				{getFormattedPrice(price)}
 			</div>
 			<div className={styles.ratingContainer}>
 				<Typography component="legend">Activity Rating:</Typography>
@@ -39,6 +43,9 @@ export default function ActivityPage({ params: { name } }: Props) {
 			<div className={styles.ratingContainer}>
 				<Typography component="legend">Difficulty Rating:</Typography>
 				<Rating name="read-only" value={4} readOnly />
+			</div>
+			<div className={styles.addressContainer}>
+				{`Address: ${address}`}
 			</div>
 			<div className={styles.box}>
 				<p>{description}</p>
