@@ -12,17 +12,17 @@ const tutorials = [
     {
         id: "1",
         image: "/assets/BrowsePage.png",
-        description: `Access the search page by pressing the "Search" button on the bottom of the screen. Then search attractions by pressing a filter button in the middle of the screen or search by a keyword using the search bar at the top.`
+        description: `Search activities by keyword or a button press.`
     },
     {
         id: "2",
         image: "/assets/BrowsePage.png",
-        description: `Select an attraction from the list of search results. You can save an attraction to view it later by pressing the save button. Your saved events can be view by pressing the "Saved" button at the bottom of the screen.`
+        description: `View or save an activity.`
     },
     {
         id: "3",
         image: "/assets/BrowsePage.png",
-        description: `An activity can be book and scheduled by pressing the schedule button and giving the information required on screen, you can view your scheduled attractions by pressing the "Schedule" button on the bottom of the screen.`
+        description: `Book an activity.`
     },
 ]
 
