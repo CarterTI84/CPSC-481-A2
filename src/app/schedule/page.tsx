@@ -10,25 +10,25 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { IconButton } from '@mui/material'
 import { FastRewind, FastForward } from '@mui/icons-material';
+import useScheduleContext from '@/hooks/useScheduleContext'
+import { ActivityType } from '@/types/Activity'
 
-const CardContainer = () => {
+const CardContainer = ({ activity }: { activity: ActivityType }) => {
     return (
         <div className={styles.cardContainer}>
-            <Activity 
-                activity={{ 
-                    id: '1',
-                    name: 'Skiing', 
-                    rating: 4,
-                    pictures: ['/assets/banff.jpg'],
-                    description: "Experience the thrill of world-class skiing in Banff, nestled amidst the stunning peaks of the Canadian Rockies. Renowned for its powder-filled slopes and breathtaking scenery, Banff offers an unforgettable winter sports adventure for skiers of all levels. From gentle slopes perfect for beginners to challenging terrain for seasoned experts, there's something for everyone on Banff's slopes. After a day of carving through pristine snow, relax and unwind in cozy mountain lodges or indulge in après-ski activities in the charming town of Banff. Whether you're a seasoned skier or new to the sport, Banff promises an exhilarating and memorable winter getaway."
-                }}
-            />
+            <Activity activity={activity} />
         </div>
     )
 }
 
-export default function Schedule() {
-    const [value, setValue] = useState<Dayjs>(dayjs(new Date()));
+type Props = {
+    searchParams: {
+        date?: string 
+    }
+}
+export default function Schedule({ searchParams }: Props) {
+    const initialDate = searchParams.date ? decodeURIComponent(searchParams.date) : new Date()
+    const [value, setValue] = useState<Dayjs>(dayjs(initialDate));
 
     const goToNextDay = () => {
         setValue(date => {
@@ -53,6 +53,10 @@ export default function Schedule() {
             setValue(newDate)
     }
 
+    const { getActivitiesOnDay } = useScheduleContext();
+
+    const activities = getActivitiesOnDay(value.toDate())
+    
     return (
         <PaddedContainer>
             <center className={styles.container}>
@@ -71,6 +75,9 @@ export default function Schedule() {
                     <IconButton onClick={goToNextDay}>
                         <FastForward />
                     </IconButton>
+                </div>
+                <div className={styles.activitiesContainer}>
+                    {activities.map(activity => <CardContainer key={activity.id} activity={activity} />)}
                 </div>
             </center>    
         </PaddedContainer>

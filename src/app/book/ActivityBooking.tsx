@@ -23,8 +23,8 @@ const SuccessComponent = ({ activity, startTime, endTime }: SuccessComponentProp
     return (
         <PaddedContainer>
             <div className={styles.container}>
-                <h1 style={{ color: "green" }}>Booking Successfull!</h1>
-                <h3>Your booking details:</h3>
+                <h1 style={{ color: "lightgreen" }}>Booking Successfull!</h1>
+                <h2 style={{ width: "100%", textAlign: "left" }}>Your booking details:</h2>
                 <div className={styles.bookingDetailContainer}>
                     <strong>Activity:</strong>{` ${activity.name}`}
                 </div>
@@ -34,7 +34,7 @@ const SuccessComponent = ({ activity, startTime, endTime }: SuccessComponentProp
                 <div className={styles.bookingDetailContainer}>
                     <strong>End Time:</strong>{` ${endTime.toDate()}`}
                 </div>
-                <Link href='/schedule' style={{ width: "100%" }}>
+                <Link href={`/schedule?date=${startTime.toISOString()}`} style={{ width: "100%" }}>
                     <Button
                         variant="contained"
                         sx={{ 
@@ -87,18 +87,21 @@ export default function ActivityBooking({ activity }: { activity: ActivityType }
             startLoading()
 
             addScheduleItem({
-                activity: activity.id,
+                activity,
                 startTime: startTime.toDate().toISOString(),
                 endTime: stopTime.toDate().toISOString(),
                 additionalNotes
             })
              // load for 3 seconds
-            setTimeout(() => setSuccess(true), 3000)
+            setTimeout(() => {
+                setSuccess(true)
+                stopLoading()
+            }, 2000)
         } catch (error: any) {
             console.error("An error occured while trying to book: ", error)
             alert(error.message)
-        }
-        stopLoading() 
+            stopLoading()
+        }  
     }
 
     if(success)
