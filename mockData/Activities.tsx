@@ -1,3 +1,5 @@
+import { ActivityCategory } from "@/types/Activity"
+
 export const activities = [
     {
         id: "1",
@@ -135,12 +137,12 @@ export const activities = [
     },
 ]
 
-export const activityCategories = [
+export const activityCategories: ActivityCategory[] = [
     {
         id: "10",
         name: 'Food',
         picture: '/assets/food_category.webp',
-        activites: [
+        activities: [
             "7",
             "8",
             "9"
