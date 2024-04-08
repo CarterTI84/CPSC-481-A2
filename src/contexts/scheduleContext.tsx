@@ -4,7 +4,6 @@ import { ActivityType } from '@/types/Activity';
 import { ScheduleItem } from '@/types/Schedule';
 import { PropsWithChildren, createContext, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-import { activities } from '~/mockData/Activities';
 
 const localStorageKey = "visit-ab-schedule";
 
@@ -15,7 +14,7 @@ const getSchedule = (): ScheduleItem[] => {
     return []
 }
 
-const addSchedule = (schedule: ScheduleItem[]) => {
+const updateSchedule = (schedule: ScheduleItem[]) => {
     localStorage.setItem(localStorageKey, JSON.stringify({ schedule }))
 }
 
@@ -32,12 +31,14 @@ export function ScheduleContextProvider({ children }: PropsWithChildren) {
     const addScheduleItem = (arg: Omit<ScheduleItem, "id">) => {
         const { activity, startTime, endTime, additionalNotes } = arg
         setSchedule(schedule => {
-            let newArr = [...schedule]
-            newArr.push({
-                id: uuidv4(), activity, 
-                startTime, endTime, additionalNotes
-            })
-            addSchedule(newArr)
+            let newArr = [
+                ...schedule, 
+                {
+                    id: uuidv4(), activity, 
+                    startTime, endTime, additionalNotes
+                }
+            ]
+            updateSchedule(newArr)
             return newArr
         })
     }
