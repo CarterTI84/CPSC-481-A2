@@ -16,14 +16,14 @@ const tutorials = [
     },
     {
         id: "2",
-        image: "/assets/BrowsePage.png",
+        image: "/assets/SearchPage.png",
         description: `View or save an activity.`
     },
     {
         id: "3",
-        image: "/assets/BrowsePage.png",
-        description: `Book an activity.`
-    },
+        image: "/assets/BookTut.png",
+        description: `Book an activity, review it after!`
+    }
 ]
 
 const Arrow = () => null
