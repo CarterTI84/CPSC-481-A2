@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.dateSection {
+    width: 80%;
+}
+
 .additionalNotesContainer {
     width: 80%;
     margin: 50px 0;

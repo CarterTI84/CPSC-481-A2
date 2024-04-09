@@ -13,6 +13,7 @@ import { Button } from "@mui/material";
 import useScheduleContext from "@/hooks/useScheduleContext";
 import useLoadingContext from "@/hooks/useLoadingContext";
 import Link from "next/link";
+import { beautifyDate } from "@/lib/helpers";
 
 type SuccessComponentProps = { 
     activity: ActivityType,
@@ -29,10 +30,10 @@ const SuccessComponent = ({ activity, startTime, endTime }: SuccessComponentProp
                     <strong>Activity:</strong>{` ${activity.name}`}
                 </div>
                 <div className={styles.bookingDetailContainer}>
-                    <strong>Start Time:</strong>{` ${startTime.toDate()}`}
+                    <strong>Start Time:</strong>{` ${beautifyDate(startTime.toDate())}`}
                 </div>
                 <div className={styles.bookingDetailContainer}>
-                    <strong>End Time:</strong>{` ${endTime.toDate()}`}
+                    <strong>End Time:</strong>{` ${beautifyDate(endTime.toDate())}`}
                 </div>
                 <Link href={`/schedule?date=${startTime.toISOString()}`} style={{ width: "100%" }}>
                     <Button
@@ -116,12 +117,12 @@ export default function ActivityBooking({ activity }: { activity: ActivityType }
     return (
         <PaddedContainer>
             <div className={styles.container}>
-                <h1>{`Book: ${name}`}</h1>
+                <h1 style={{ textAlign: "center" }}>{`Book: ${name}`}</h1>
                 <div className={styles.dateSection}>
                     <h3>Start Time:</h3>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateTimePicker
-                            sx={{ bgcolor: "white" }}
+                            sx={{ bgcolor: "white", width: "100%" }}
                             value={startTime}
                             onChange={handleStartTimeChange}
                         />
@@ -131,7 +132,7 @@ export default function ActivityBooking({ activity }: { activity: ActivityType }
                     <h3>End Time:</h3>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateTimePicker
-                            sx={{ bgcolor: "white" }}
+                            sx={{ bgcolor: "white", width: "100%" }}
                             value={stopTime}
                             onChange={handleStopTimeChange}
                         />

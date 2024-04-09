@@ -1,0 +1,17 @@
+.container {
+    color: white;
+}
+
+.ratingContainer {
+    width: 80%;
+}
+
+.ratingContainer h3 {
+    text-align: left;
+}
+
+.dropdown {
+    width: 100%;
+    height: 40px;
+    font-size: large;
+}
