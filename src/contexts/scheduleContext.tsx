@@ -21,6 +21,7 @@ const updateSchedule = (schedule: ScheduleItem[]) => {
 type contextObject = {
     schedule: ScheduleItem[],
     addScheduleItem: (arg: Omit<ScheduleItem, "id">) => void,
+    removeScheduleItem: (itemId: string) => void,
     getActivitiesOnDay: (arg: Date) => ScheduledActivity[]
 }
 const ScheduleContext = createContext<contextObject | null>(null)
@@ -30,6 +31,8 @@ export function ScheduleContextProvider({ children }: PropsWithChildren) {
 
     const addScheduleItem = (arg: Omit<ScheduleItem, "id">) => {
         const { activity, startTime, endTime, additionalNotes } = arg
+        if(schedule.some(item => startTime <= item.endTime && endTime >= item.startTime))
+            throw new Error('You already have an activity scheduled at this time!')
         setSchedule(schedule => {
             let newArr = [
                 ...schedule, 
@@ -41,6 +44,19 @@ export function ScheduleContextProvider({ children }: PropsWithChildren) {
             updateSchedule(newArr)
             return newArr
         })
+    }
+    const removeScheduleItem = (itemId: string) => {
+        let theItem = schedule.findIndex(item => item.id === itemId)
+        if(theItem >= 0) {
+            setSchedule(schedule => {
+                let newArr = [
+                    ...schedule.slice(0, theItem), 
+                    ...schedule.slice(theItem + 1)
+                ]
+                updateSchedule(newArr)
+                return newArr
+            })
+        }
     }
 
     const getActivitiesOnDay = (targetDate: Date) => {
@@ -68,7 +84,7 @@ export function ScheduleContextProvider({ children }: PropsWithChildren) {
 
     return (
         <ScheduleContext.Provider
-            value={{ schedule, addScheduleItem, getActivitiesOnDay }}
+            value={{ schedule, addScheduleItem, removeScheduleItem, getActivitiesOnDay }}
         >
             {children}
         </ScheduleContext.Provider>

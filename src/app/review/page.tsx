@@ -73,7 +73,7 @@ const ReviewActivity = ({ activity }: { activity: ActivityType }) => {
                 </div>
                 <div className={styles.ratingContainer}>
                     <h3>How difficult did you find this activity?</h3>
-                    <DropDown message={{ positive: "Easy", negative: "Difficult" }} />
+                    <DropDown message={{ positive: "Difficult", negative: "Easy" }} />
                 </div>
                 <LoadingButton
                     loading={isLoading}

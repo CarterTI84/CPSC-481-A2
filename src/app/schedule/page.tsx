@@ -8,7 +8,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { IconButton } from '@mui/material'
+import { Button, IconButton } from '@mui/material'
 import { FastRewind, FastForward } from '@mui/icons-material';
 import useScheduleContext from '@/hooks/useScheduleContext'
 import { ScheduledActivity } from '@/types/Activity'
@@ -18,7 +18,16 @@ type CardContainerProps = {
     scheduledActivity: ScheduledActivity
 }
 const CardContainer = ({ scheduledActivity }: CardContainerProps) => {
-    const { activity, startTime, endTime } = scheduledActivity;
+    const { id, activity, startTime, endTime } = scheduledActivity;
+    
+    const { removeScheduleItem } = useScheduleContext();
+
+    const handleCancel = () => {
+        if(confirm('Are you sure you want to cancel this activity?')){
+            removeScheduleItem(id)
+        }
+    }
+
     return (
         <div className={styles.cardContainer}>
             <div className={styles.activityContainer}>
@@ -29,6 +38,21 @@ const CardContainer = ({ scheduledActivity }: CardContainerProps) => {
             </div>
             <div className={styles.timeSection}>
                 <strong>End Time:</strong>{` ${beautifyDate(new Date(endTime))}`}
+            </div>
+            <div className={styles.removeButton}>
+                <Button
+                    onClick={handleCancel}
+                    variant="contained"
+                    sx={{
+                        width: "100%",
+                        bgcolor: "brown",
+                        "&:hover": {
+                            bgcolor: "maroon"
+                        }
+                    }}
+                >
+                    Cancel Activity
+                </Button>
             </div>
         </div>
     )
