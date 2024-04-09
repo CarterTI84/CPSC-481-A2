@@ -116,12 +116,12 @@ export default function ActivityBooking({ activity }: { activity: ActivityType }
     return (
         <PaddedContainer>
             <div className={styles.container}>
-                <h1>{`Book: ${name}`}</h1>
+                <h1 style={{ textAlign: "center" }}>{`Book: ${name}`}</h1>
                 <div className={styles.dateSection}>
                     <h3>Start Time:</h3>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateTimePicker
-                            sx={{ bgcolor: "white" }}
+                            sx={{ bgcolor: "white", width: "100%" }}
                             value={startTime}
                             onChange={handleStartTimeChange}
                         />
@@ -131,7 +131,7 @@ export default function ActivityBooking({ activity }: { activity: ActivityType }
                     <h3>End Time:</h3>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateTimePicker
-                            sx={{ bgcolor: "white" }}
+                            sx={{ bgcolor: "white", width: "100%" }}
                             value={stopTime}
                             onChange={handleStopTimeChange}
                         />

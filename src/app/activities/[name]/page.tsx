@@ -21,7 +21,7 @@ export default function ActivityPage({ params: { name } }: Props) {
 	if(!activity)
 		return <h1>{`Could not find activity: ${activityName}`}</h1>
 
-	const { id, pictures, description, price, address } = activity;
+	const { id, pictures, description, price, address, rating, difficulty } = activity;
 
 	return (
 		<center className={styles.container}>
@@ -34,15 +34,11 @@ export default function ActivityPage({ params: { name } }: Props) {
 			</div>
 			<div className={styles.ratingContainer}>
 				<Typography component="legend">Activity Rating:</Typography>
-				<Rating name="read-only" value={4.5} precision={0.5} readOnly />
-			</div>
-			<div className={styles.ratingContainer}>
-				<Typography component="legend">Price Rating:</Typography>
-				<Rating name="read-only" value={2} readOnly />
+				<Rating name="read-only" value={rating} precision={0.1} readOnly />
 			</div>
 			<div className={styles.ratingContainer}>
 				<Typography component="legend">Difficulty Rating:</Typography>
-				<Rating name="read-only" value={4} readOnly />
+				<Rating name="read-only" value={difficulty} precision={0.1} readOnly />
 			</div>
 			<div className={styles.addressContainer}>
 				{`Address: ${address}`}
@@ -65,16 +61,18 @@ export default function ActivityPage({ params: { name } }: Props) {
 				</Link>
 			</div>
 			<div className={styles.buttonContainer}>
-				<Button
-					variant='contained'
-					sx={{ 
-						width: "100%",
-						bgcolor: "#a66832", 
-						"&:hover": { bgcolor: "#422a14" } 
-					}}
-				>
-					Review
-				</Button>
+				<Link href={`/review?activityId=${id}`} style={{ width: '100%' }}>
+					<Button
+						variant='contained'
+						sx={{ 
+							width: "100%",
+							bgcolor: "#a66832", 
+							"&:hover": { bgcolor: "#422a14" } 
+						}}
+					>
+						Review
+					</Button>
+				</Link>
 			</div>
 		</center>
 	);
