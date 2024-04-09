@@ -1,6 +1,6 @@
 'use client'
 
-import { ActivityType } from '@/types/Activity';
+import { ActivityType, ScheduledActivity } from '@/types/Activity';
 import { ScheduleItem } from '@/types/Schedule';
 import { PropsWithChildren, createContext, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
@@ -21,7 +21,7 @@ const updateSchedule = (schedule: ScheduleItem[]) => {
 type contextObject = {
     schedule: ScheduleItem[],
     addScheduleItem: (arg: Omit<ScheduleItem, "id">) => void,
-    getActivitiesOnDay: (arg: Date) => ActivityType[]
+    getActivitiesOnDay: (arg: Date) => ScheduledActivity[]
 }
 const ScheduleContext = createContext<contextObject | null>(null)
 
@@ -44,7 +44,7 @@ export function ScheduleContextProvider({ children }: PropsWithChildren) {
     }
 
     const getActivitiesOnDay = (targetDate: Date) => {
-        let result: ActivityType[] = [];
+        let result: ScheduledActivity[] = [];
         result = schedule.filter(item => {
             const isSameDay = (activityDateString: string) => {
                 const activityDate = new Date(activityDateString);
@@ -55,7 +55,10 @@ export function ScheduleContextProvider({ children }: PropsWithChildren) {
                 );
             }
             return isSameDay(item.startTime)
-        }).map(item => item.activity)
+        }).map(item => {
+            const { id, activity, startTime, endTime } = item
+            return ({ id, startTime, endTime, activity })
+        })
         return result
     }
 

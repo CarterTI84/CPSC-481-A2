@@ -13,6 +13,7 @@ import { Button } from "@mui/material";
 import useScheduleContext from "@/hooks/useScheduleContext";
 import useLoadingContext from "@/hooks/useLoadingContext";
 import Link from "next/link";
+import { beautifyDate } from "@/lib/helpers";
 
 type SuccessComponentProps = { 
     activity: ActivityType,
@@ -29,10 +30,10 @@ const SuccessComponent = ({ activity, startTime, endTime }: SuccessComponentProp
                     <strong>Activity:</strong>{` ${activity.name}`}
                 </div>
                 <div className={styles.bookingDetailContainer}>
-                    <strong>Start Time:</strong>{` ${startTime.toDate()}`}
+                    <strong>Start Time:</strong>{` ${beautifyDate(startTime.toDate())}`}
                 </div>
                 <div className={styles.bookingDetailContainer}>
-                    <strong>End Time:</strong>{` ${endTime.toDate()}`}
+                    <strong>End Time:</strong>{` ${beautifyDate(endTime.toDate())}`}
                 </div>
                 <Link href={`/schedule?date=${startTime.toISOString()}`} style={{ width: "100%" }}>
                     <Button

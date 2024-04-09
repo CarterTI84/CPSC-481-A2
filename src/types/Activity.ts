@@ -17,3 +17,10 @@ export type ActivityCategory = {
     picture: string,
     activities: string[]
 }
+
+export type ScheduledActivity = {
+    id: string,
+    startTime: string,
+    endTime: string,
+    activity: ActivityType
+}
